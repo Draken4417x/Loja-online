@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja online</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="icon" href="src/imagens/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Menu fixo no topo -->
+    <div class="nav-bar">
+        <button id="ir-cadastro">Cadastro</button>
+        <button id="ir-vendas">Vendas</button>
+        <button id="ir-reposicao">Reposição</button>
+        <button id="ir-editar">Edição</button>
+        <button id="ir-historico">Histórico</button>
+    </div>
+
+    <!-- Página de Cadastro de Produtos -->
+    <div class="container" id="cadastro-page">
+        <h1>Cadastro de Produtos</h1>
+        <div id="produtos-cadastro">
+            <label for="produto-nome">Nome do Produto:</label>
+            <input type="text" id="produto-nome" placeholder="Nome do Produto">
+
+            <label for="produto-preco">Preço de Venda (R$):</label>
+            <input type="number" id="produto-preco" placeholder="Defina o preço de venda" step="0.01">
+
+            <!-- Seção para selecionar o tipo de quantidade: Unidades ou Kg -->
+            <label>Selecione o tipo de estoque:</label>
+            <div id="tipo-estoque">
+                <input type="radio" id="estoque-unidade" name="tipoEstoque" value="unidade" checked>
+                <label for="estoque-unidade">Unidades</label>
+
+                <input type="radio" id="estoque-kg" name="tipoEstoque" value="kg">
+                <label for="estoque-kg">Kg</label>
+            </div>
+
+            <div id="estoque-unidade-container">
+                <label for="produto-estoque-unidade">Quantidade em Estoque (Unidades):</label>
+                <input type="number" id="produto-estoque-unidade" placeholder="Quantidade em Unidades">
+            </div>
+
+            <div id="estoque-kg-container" class="hidden">
+                <label for="produto-estoque-kg">Quantidade em Estoque (Kg):</label>
+                <input type="number" id="produto-estoque-kg" placeholder="Quantidade em Kg">
+            </div>
+
+            <button id="add-produto">Adicionar Produto</button>
+        </div>
+
+    </div>
+
+    <!-- Página de Vendas -->
+    <div class="container hidden" id="vendas-page">
+        <h1>Página de Vendas</h1>
+        
+    <!-- Campo para entrada de caixa -->
+    <div id="entrada-caixa-container">
+      <label for="entrada-caixa">Entrada de Caixa:</label>
+      <input type="number" id="entrada-caixa" placeholder="Valor de entrada">
+      <button id="confirmar-entrada-caixa">Confirmar Entrada</button>
+    </div>
+   <p id="valor-entrada-caixa">R$ 0.00</p>
+
+    <div>
+      <input type="text" id="pesquisa-produto" placeholder="Digite o nome do produto">
+    </div>
+        <div id="produto-venda">
+            <label for="produto-selecionado">Selecione o Produto:</label>
+            <select id="produto-selecionado"></select>
+
+            <div id="input-peso-container" class="hidden">
+                <label for="peso-em-gramas">Peso em gramas:</label>
+                <input type="number" id="peso-em-gramas" placeholder="Digite o peso em gramas">
+            </div>
+            <div id="preco-convertido-container" class="hidden">
+                <p id="preco-convertido"></p>
+            </div>
+              <button id="adicionar-produto">Adicionar Produto ao Pedido</button>
+
+            <label>Selecione o Tipo de Pagamento:</label>
+            <div id="tipo-pagamento">
+                <input type="radio" id="pagamento-dinheiro" name="tipoPagamento" value="dinheiro" checked>
+                <label for="pagamento-dinheiro">Dinheiro</label>
+
+                <input type="radio" id="pagamento-cartao" name="tipoPagamento" value="cartao">
+                <label for="pagamento-cartao">Cartão</label>
+
+                <input type="radio" id="pagamento-pix" name="tipoPagamento" value="pix">
+                <label for="pagamento-pix">Pix</label>
+            </div>
+          
+           <div id="resumo-pedido">
+          <h3>Resumo do Pedido:</h3>
+        </div>
+
+            <button id="vender">Vender</button>
+        </div>
+
+        <button id="fechar-caixa">Fechar Caixa</button>
+       
+
+        <div id="popup-reset" class="popup-reset">
+      <div class="popup-content">
+        <span id="popup-close" class="popup-close">&times;</span>
+        <h2>Caixa Resetado</h2>
+        <p>O fechamento do caixa foi realizado com sucesso e o caixa foi resetado para o próximo dia.</p>
+      </div>
+    </div>
+     <h2>Pedidos Realizados</h2>
+    <table id="tabela-pedidos">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Produtos</th>
+            <th>Quantidade</th>
+            <th>Valor Total</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Linhas da tabela serão adicionadas dinamicamente -->
+    </tbody>
+</table>
+
+
+        <div id="alerta-estoque" class="hidden">⚠️ Estoque Baixo!</div>
+    </div>
+
+    <!-- Página de Reposição de Itens -->
+    <div class="container hidden" id="reposicao-page">
+        <h1>Reposição de Itens</h1>
+        <div id="produto-reposicao">
+            <label for="produto-selecionado-reposicao">Selecione o Produto:</label>
+            <select id="produto-selecionado-reposicao"></select>
+         </div>
+         <div id="quantidade-reposicao">
+            <label for="quantidade-repor">Quantidade para Repor:</label>
+            <input type="number" id="quantidade-repor" min="1" placeholder="Informe a quantidade">
+        </div>
+        <button id="confirmar-reposicao">Confirmar Reposição</button>
+
+    </div>
+
+    <!-- Página de Produtos para Edição e Remoção -->
+    <div class="container hidden" id="editar-page">
+        <h1>Editar/Remover Produtos</h1>
+        <label for="produto-selecionado-editar">Selecione o Produto para Editar:</label>
+        <select id="produto-selecionado-editar"></select>
+
+        <label for="novo-nome-produto">Novo Nome do Produto:</label>
+        <input type="text" id="novo-nome-produto" placeholder="Novo nome do produto">
+
+        <label for="novo-preco-produto">Novo Preço (R$):</label>
+        <input type="number" id="novo-preco-produto" placeholder="Novo preço">
+
+        <button id="salvar-edicao">Salvar Edição</button>
+        <button id="remover-produto">Remover Produto</button>
+
+    </div>
+    
+<!-- Página de Histórico -->
+<div id="historico-page" class="hidden">
+  <h1>Histórico de Vendas</h1>
+  <table id="tabela-historico">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Unidades Vendidas</th>
+            <th>Kg vendidos</th>
+            <th>Valor Total (R$)</th>
+            <th>Valor Cancelado (R$)</th>
+            <th>Unidades Canceladas</th> 
+            <th>kg Cancelados</th> 
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Registros de vendas serão adicionados dinamicamente -->
+    </tbody>
+  </table>
+  <button id="limpar-historico" class="botao">Limpar Histórico</button>
+  <div>
+    <button id="exportar-csv" class="botao">Exportar para CSV</button>
+    <button id="exportar-pdf" class="botao">Exportar para PDF</button>
+  </div>
+</div>
+
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+    <script src="src/javascript/script.js"></script>
+</body>
+</html>
