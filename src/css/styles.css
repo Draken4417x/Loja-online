@@ -108,9 +108,6 @@ button:hover {
     table-layout: auto; 
 }
 
-/* Responsividade para telas menores */
-@media screen and (max-width: 768px) {
-
 
 /* Estilo dos botões de Tipo de Estoque */
 #tipo-estoque label {
