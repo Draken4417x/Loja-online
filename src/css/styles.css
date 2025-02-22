@@ -1,6 +1,6 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: url('/src/imagens/Fundo.png');
+    background-image: url('../imagens/Fundo.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment:fixed;
