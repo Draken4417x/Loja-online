@@ -95,6 +95,21 @@ button:hover {
 .hidden {
     display: none;
 }
+/* Contêiner da tabela de Pedidos Realizados */
+#tabela-pedidos-container {
+    width: 100%;
+    overflow-x: auto; 
+}
+
+/* Ajusta a tabela de pedidos */
+#tabela-pedidos {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto; 
+}
+
+/* Responsividade para telas menores */
+@media screen and (max-width: 768px) {
 
 
 /* Estilo dos botões de Tipo de Estoque */
@@ -202,6 +217,7 @@ button:hover {
 /* Estilo para o menu fixo no topo */
 .nav-bar {
     position: fixed;
+    background-color: #44749d;
     top: 0;
     left: 0;
     width: 100%;
@@ -276,7 +292,7 @@ button:hover {
 
 /* Estilo do Histórico de Vendas */
 #historico-page {
-    margin-top: 80px;
+    margin-top: 20px;
     padding: 40px;
     background-color: #ffffff;
     border-radius: 12px;
@@ -285,40 +301,45 @@ button:hover {
     overflow-x: auto; 
 }
 
+
+.botao {
+  margin: 5px auto;
+  align-items: center;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    table-layout: auto; /* Ajusta automaticamente o tamanho das colunas */
+    table-layout: auto; 
 }
 
 th, td {
     border: 1px solid #ddd;
-    padding: 10px; /* Reduz o padding */
+    padding: 10px;
     text-align: left;
-    box-sizing: border-box; /* Inclui o padding no cálculo da largura das células */
+    box-sizing: border-box;
 }
 
 th {
     background-color: #44749d;
     color: white;
     font-weight: bold;
-    font-size: 22px; /* Reduz o tamanho da fonte */
+    font-size: 22px; 
 }
 
 td {
-    font-size: 16px; /* Reduz o tamanho da fonte */
+    font-size: 16px; 
     color: #333;
 }
 
-/* Centralizando o conteúdo da página de histórico */
 #historico-page table {
     margin-top: 30px;
     margin-bottom: 30px;
 }
 
 #historico-page table th, #historico-page table td {
-    padding: 12px; /* Ajusta o padding das células */
+    padding: 12px;
 }
 
 #historico-page table tr:nth-child(even) {
@@ -348,7 +369,6 @@ input, select, button {
     box-sizing: border-box; 
 }
 
-/* Garantir espaçamento correto entre o menu e o conteúdo */
 .page {
     padding-top: 80px;
 }
@@ -367,7 +387,6 @@ input, select, button {
        align-items: center;
        align-content: center;
        width: 100%;
-      
      }
      
     .nav-bar button{
@@ -381,6 +400,32 @@ input, select, button {
       width: 86%;
       align-items: center;
       margin: 0px auto;
+    }
+    
+    #tabela-pedidos th, 
+    #tabela-pedidos td {
+        padding: 8px;
+        font-size: 18px;
+        word-wrap: break-word; 
+    }
+
+    #tabela-pedidos {
+        display: block;
+        overflow-x: auto; 
+        white-space: nowrap;
+    }
+    
+    #tabela-historico th, 
+    #tabela-historico td {
+        padding: 8px;
+        font-size: 14px;
+        word-wrap: break-word; 
+    }
+
+    #tabela-historico {
+        display: block;
+        overflow-x: auto; 
+        white-space: nowrap;
     }
     
     #tipo-pagamento{
@@ -399,6 +444,7 @@ input, select, button {
         font-size: 16px;
         padding: 12px;
     }
+    
 
     button {
         margin: 10px 0;
